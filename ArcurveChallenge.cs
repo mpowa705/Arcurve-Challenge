@@ -1,3 +1,7 @@
+
+//Response to Arcurve Internship Challenge 2018 by Matthew Powaschuk
+
+
 /// <summary>
 /// Given a local date, get UTC date/time values for the first second of the first day
 /// of the month containing that date and the first second of the first day of next month.
@@ -30,7 +34,16 @@ void GetMonthRangeInUtc(DateTime aDate, out DateTime utcMonthStart, out DateTime
         //In this for loop statement, the only change made was changing i <= monthStart.Length to i < monthStart.Length to prevent an array out-of-bounds error. 
         for (int i = 0; i < monthStart.Length; i++)
         {
+            //On the off chance that DateTime initialization fails (NextMonth surpasses max
+            //value, for example), we throw a generic exception.
+            try{
             monthStart[i] = new DateTime(currYear, currMonth++, 1);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Unable to create DateTime object in function GetMonthRangeInUtc()");
+            }
+            
             if(currMonth == 13)
             {
                currMonth = 1;
