@@ -15,9 +15,9 @@ void GetMonthRangeInUtc(DateTime aDate, out DateTime utcMonthStart, out DateTime
         // compute the first day of the month containing aDate and successive months      
         DateTime[] monthStart = new DateTime[2];   
             
-        //Since the DateTime object is immutable, the original line within the for loop
-        //wouldn't work as aDate.Month++ would make an attempt to modify the object referenced by aDate.
-        //My solution simply involves storing the Month value of the object referenced by aDate in an int and incrementing that.
+        //Since the DateTime structure is immutable, the original line within the for loop
+        //wouldn't work as aDate.Month++ would make an attempt to modify the structure referenced by aDate.
+        //My solution simply involves storing the Month value of the structure referenced by aDate in an int and incrementing that.
         //I also do this for the year for reasons outlined below.
             
         //Additionally, in the original solution, an input of a date in december was not accounted for, as incrementing the 12th month to the 13th
